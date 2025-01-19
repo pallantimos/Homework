@@ -3,9 +3,7 @@ def get_mask_card_number(card_number: str) -> str:
     if type(card_number) is not str:
         card_number = str(card_number)
 
-    mask_card_number = (
-        card_number[0:4] + " " + card_number[4:6] + "** **** " + card_number[12:]
-    )
+    mask_card_number = card_number[0:4] + " " + card_number[4:6] + "** **** " + card_number[12:]
     return mask_card_number
 
 
