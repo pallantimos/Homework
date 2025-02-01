@@ -13,4 +13,5 @@ def choose_filter(sort_by: str) -> bool:
 
 def sort_by_date(list_dict: list, sort_by: str = "decreasing") -> list:
     """ "Функция сортирует список по дате"""
-    return sorted(list_dict, key=lambda x: x["date"], reverse=choose_filter(sort_by))
+    return sorted(list_dict, key=lambda x: x["date"],
+                  reverse=choose_filter(sort_by))
