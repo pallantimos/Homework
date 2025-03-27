@@ -9,8 +9,7 @@ def get_mask_card_number(card_number: str) -> str:
         return "Некорректная длина номера карты"
 
     mask_card_number = (
-        card_number_spaceless[0:4] + " " + card_number_spaceless[4:6] +
-        "** **** " + card_number_spaceless[12:]
+        card_number_spaceless[0:4] + " " + card_number_spaceless[4:6] + "** **** " + card_number_spaceless[12:]
     )
     return mask_card_number
 
