@@ -90,11 +90,13 @@ def test_transaction_descriptions(transactions):
 
 
 def test_card_number_generator(card_number_value):
-    generator = card_number_generator(1, 9999999999999999)
+    generator = card_number_generator(123456789, 200000000)
     card_number = next(generator)
     assert isinstance(card_number, str)
+    assert (card_number == '0000 0001 2345 6789')
+    assert (next(generator) == '0000 0001 2345 6790')
     generator = card_number_generator(-1, 1)
     try:
-        next(generator)  # Вызовет StopIteration
+        next(generator)
     except StopIteration as e:
         assert e.value == "Некорректный номер"

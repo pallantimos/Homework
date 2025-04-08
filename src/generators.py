@@ -7,7 +7,7 @@ def filter_by_currency(dict_list: list, currency: str):
         return "Пустой кортеж"
 
     for i in dict_list:
-        if i["operationAmount"]["currency"]["name"] == "USD":
+        if i["operationAmount"]["currency"]["name"] == currency:
             yield i
 
 
@@ -21,7 +21,17 @@ def card_number_generator(start: int, end: int):
     """ "Функция генерирует случайный номер карты"""
     if end > 9999999999999999 or start > 9999999999999999 or start < 1 or end < 1 or start > end:
         return "Некорректный номер"
-    while True:
-        random_number = random.randint(start, end)
-        formatted = f"{random_number:016d}"
+    while start <= end:
+        formatted = f"{start:016d}"
         yield f"{formatted[:4]} {formatted[4:8]}" f" {formatted[8:12]} {formatted[12:]}"
+        start += 1
+
+
+generator = card_number_generator(123456789, 123456794)
+print(next(generator))
+print(next(generator))
+print(next(generator))
+print(next(generator))
+
+
+
