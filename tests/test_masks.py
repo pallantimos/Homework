@@ -1,5 +1,6 @@
 import pytest
-from src.masks import get_mask_card_number, get_mask_account
+
+from src.masks import get_mask_account, get_mask_card_number
 
 
 @pytest.fixture
@@ -11,12 +12,13 @@ def card_numbers():
         ("123", "Некорректная длина номера карты"),
     ]
 
+
 @pytest.fixture
 def account_numbers():
     return [
         ("64686473678894779589", "**9589"),
         ("123", "Некорректная длина номера карты"),
-        (64686473678894779589, "**9589")
+        (64686473678894779589, "**9589"),
     ]
 
 
@@ -28,6 +30,7 @@ def test_get_mask_card_number(card_numbers):
 def test_get_mask_account(account_numbers):
     for number, expected in account_numbers:
         assert get_mask_account(number) == expected
+
 
 def test_empty_input():
     assert get_mask_card_number("") == "Некорректная длина номера карты"
