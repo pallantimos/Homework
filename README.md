@@ -97,6 +97,19 @@ for currency_code, expected_name, transactions_list in transactions:
     print(description)
 ```
 
+Пример использования decorators.py
+Код файла main.py
+
+```
+from src import decorators
+
+@log(filename="mylog.txt")
+    def test(x, y):
+        return x + y
+
+    test("1", 2)
+```
+
 # Тестирование
 Протестированы модули в директории src
 
