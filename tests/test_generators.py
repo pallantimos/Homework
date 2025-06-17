@@ -72,10 +72,8 @@ def test_filter_by_currency(transactions):
         generator = filter_by_currency(transactions_list, currency_code)
         filtered_transactions = list(generator)
         if not transactions_list:
-            # Проверяем, что для пустого списка результат пуст
             assert len(filtered_transactions) == 0
         else:
-            # Проверяем все транзакции на соответствие валюте
             assert all(t["operationAmount"]["currency"]["name"] == expected_name for t in filtered_transactions)
 
 
@@ -93,8 +91,8 @@ def test_card_number_generator(card_number_value):
     generator = card_number_generator(123456789, 200000000)
     card_number = next(generator)
     assert isinstance(card_number, str)
-    assert (card_number == '0000 0001 2345 6789')
-    assert (next(generator) == '0000 0001 2345 6790')
+    assert card_number == "0000 0001 2345 6789"
+    assert next(generator) == "0000 0001 2345 6790"
     generator = card_number_generator(-1, 1)
     try:
         next(generator)
