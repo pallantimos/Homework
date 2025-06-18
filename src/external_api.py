@@ -11,7 +11,7 @@ def get_sum_transaction(transaction: dict) -> Any:
     """
     Возвращает amount транзакции в рублях
     """
-    if transaction["operationAmount"]["currency"]["name"] == "USD":
+    if transaction["operationAmount"]["currency"]["code"] == "USD":
         amount = transaction["operationAmount"]["amount"]
         url = f"https://api.apilayer.com/exchangerates_data/\
         convert?to=RUB&from=USD&amount={amount}"
@@ -23,7 +23,7 @@ def get_sum_transaction(transaction: dict) -> Any:
         response = response.json()
         return response["result"]
 
-    elif transaction["operationAmount"]["currency"]["name"] == "EUR":
+    elif transaction["operationAmount"]["currency"]["code"] == "EUR":
         amount = transaction["operationAmount"]["amount"]
         url = f"https://api.apilayer.com/exchangerates_data/\
         convert?to=RUB&from=EUR&amount={amount}"
