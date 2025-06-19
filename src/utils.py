@@ -2,7 +2,7 @@ import json
 from typing import Any
 
 
-def get_transactions(json_path: str) -> Any:
+def get_transactions(json_path: str) -> list:
     """
     Читает и возвращает содержимое JSON-файла.
     В случае ошибки пути или некорректного JSON возвращает пустой словарь.
@@ -15,3 +15,5 @@ def get_transactions(json_path: str) -> Any:
         print("Указан неправильный путь")
 
     return []
+
+print(type(get_transactions('C:\\Users\\dondo\\PycharmProjects\\Homework\\data\\operations.json')))
