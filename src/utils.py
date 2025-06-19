@@ -15,5 +15,3 @@ def get_transactions(json_path: str) -> list:
         print("Указан неправильный путь")
 
     return []
-
-print(type(get_transactions('C:\\Users\\dondo\\PycharmProjects\\Homework\\data\\operations.json')))
