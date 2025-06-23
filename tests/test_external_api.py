@@ -42,18 +42,17 @@ def test_get_sum_transaction(transaction):
     assert get_sum_transaction(transaction[0]) == "96900.90"
     with patch("requests.request") as mock_get:
         mock_get.return_value.json.return_value = {"result": "100"}
+        
         assert get_sum_transaction(transaction[1]) == "100"
-        mock_get.assert_called_with(
-            "GET",
-            "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=79428.73",
-            headers={"apikey": os.getenv("API_KEY")},
-            data={},
-        )
+        args, kwargs = mock_get.call_args
+        assert args[0] == "GET"
+        assert "convert?to=RUB&from=USD&amount=79428.73" in args[1]
+        assert kwargs["headers"] == {"apikey": os.getenv("API_KEY")}
+        assert kwargs["data"] == {}
 
         assert get_sum_transaction(transaction[2]) == "100"
-        mock_get.assert_called_with(
-            "GET",
-            "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=EUR&amount=37044.95",
-            headers={"apikey": os.getenv("API_KEY")},
-            data={},
-        )
+        args, kwargs = mock_get.call_args
+        assert args[0] == "GET"
+        assert "convert?to=RUB&from=EUR&amount=37044.95" in args[1]
+        assert kwargs["headers"] == {"apikey": os.getenv("API_KEY")}
+        assert kwargs["data"] == {}

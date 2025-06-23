@@ -10,12 +10,10 @@ def log(filename: str = "console") -> Callable:
                 result = func(*args, **kwargs)
             except Exception as e:
                 if filename == "console":
-                    print(f"{func.__name__} error:\
-                          {repr(e)}. Inputs: ({args}), {kwargs}")
+                    print(f"{func.__name__} error: {repr(e)}. Inputs: ({args}), {kwargs}")
                 else:
                     with open(filename, "a") as file:
-                        file.write(f"{func.__name__} error:\
-                                   {repr(e)}. Inputs: ({args}), {kwargs}\n")
+                        file.write(f"{func.__name__} error: {repr(e)}. Inputs: ({args}), {kwargs}\n")
                 return None
             else:
                 if filename == "console":
