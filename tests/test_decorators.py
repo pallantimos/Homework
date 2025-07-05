@@ -1,5 +1,6 @@
 from src.decorators import log
 
+
 def test_log_ok():
     @log(filename="mylog.txt")
     def test(x, y):
@@ -23,7 +24,7 @@ def test_log_err():
         last_line = lines[-1].strip() if lines else ""
     assert (
         last_line == "test error: TypeError('can only concatenate "
-                     "str (not \"int\") to str'). Inputs: (('1', 2)), {}"
+        "str (not \"int\") to str'). Inputs: (('1', 2)), {}"
     )
 
 
@@ -45,7 +46,6 @@ def test_log_err_console(capsys):
     test("1", 2)
     captured = capsys.readouterr()
     assert (
-        captured.out
-        == "test error: TypeError('can only concatenate str "
-           "(not \"int\") to str'). Inputs: (('1', 2)), {}\n"
+        captured.out == "test error: TypeError('can only concatenate str "
+        "(not \"int\") to str'). Inputs: (('1', 2)), {}\n"
     )

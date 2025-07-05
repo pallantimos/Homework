@@ -1,7 +1,11 @@
-def log(filename: str = "console"):
-    """"Декоратор логирует данные о работе функции в файл или в консоль"""
-    def decorator(func):
-        def wrapper(*args, **kwargs):
+from typing import Any, Callable
+
+
+def log(filename: str = "console") -> Callable:
+    """ "Декоратор логирует данные о работе функции в файл или в консоль"""
+
+    def decorator(func: Callable) -> Callable:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
             except Exception as e:
