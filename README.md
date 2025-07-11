@@ -110,6 +110,17 @@ from src import decorators
     test("1", 2)
 ```
 
+Пример использования read_csv_excel.py
+Код файла main.py
+
+```
+from src import read_csv_excel
+
+list_transactions =ead_csv_excel.get_from_csv('data/transactions.csv')
+
+print(list_transactions)
+```
+
 # Тестирование
 Протестированы модули в директории src
 
