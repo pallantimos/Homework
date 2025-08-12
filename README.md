@@ -33,11 +33,11 @@ poetry install
 
 Пример использования main.py
 
-![alt Использование main.py](image.png)
+![alt Использование main.py](img/image.png)
 
-![alt text](image.png)
+![alt text](img/image2.png)
 
-![alt text](image.png)
+![alt text](img/image3.png)
 
 # Тестирование
 
