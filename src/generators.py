@@ -1,14 +1,24 @@
 from typing import Any
 
 
-def filter_by_currency(dict_list: list, currency: str) -> Any:
-    """ "Функция фильтрует список словарей, где валюта = USD"""
+def filter_by_currency(dict_list: list, currency: str, format: str) -> Any:
+    """ "Функция фильтрует список словарей"""
+    """в зависимости от формата словаря, по выбранной валюте"""
     if not dict_list:
-        return "Пустой кортеж"
+        return "Пустой список"
 
-    for i in dict_list:
-        if i["operationAmount"]["currency"]["name"] == currency:
-            yield i
+    if format == 'json':
+        for i in dict_list:
+            if i["operationAmount"]["currency"]["code"] == currency:
+                yield i
+    elif format == 'csv':
+        for i in dict_list:
+            if i["currency_code"] == currency:
+                yield i
+    elif format == 'excel':
+        for i in dict_list:
+            if i["currency_code"] == currency:
+                yield i
 
 
 def transaction_descriptions(dict_list: list) -> Any:

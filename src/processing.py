@@ -1,3 +1,5 @@
+from typing import Literal, List, Dict, Any
+
 def filter_by_state(list_dict: list, state: str = "EXECUTED") -> list:
     """ "Функция фильтрует список словарей по ключ state"""
     return [item for item in list_dict if item.get("state") == state]
@@ -11,7 +13,7 @@ def choose_filter(sort_by: str) -> bool:
         return False
 
 
-def sort_by_date(list_dict: list, sort_by: str = "decreasing") -> list:
+def sort_by_date(list_dict: list, sort_by: Literal["increasing", "decreasing"] = "decreasing") -> List[Dict[str, Any]]:
     """ "Функция сортирует список по дате"""
     return sorted(
         list_dict, key=lambda x: x["date"], reverse=choose_filter(sort_by)

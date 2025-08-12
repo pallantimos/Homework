@@ -31,6 +31,3 @@ def get_transactions(json_path: str) -> Any:
         print("Указан неправильный путь")
 
     return []
-
-
-get_transactions("d,asdl;as")
