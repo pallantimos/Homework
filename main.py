@@ -9,20 +9,20 @@ import json
 
 "Доделать работу с csv и работу с excel"
 
-print('Привет! Добро пожаловать в программу работы с банковскими транзакциями\n' \
+print('Привет! Добро пожаловать в программу работы с банковскими транзакциями\n'
 'Выберите необходимый пункт меню:')
 
 answer = input(
-'1. Получить информацию о транзакциях из JSON-файла\n' \
-'2. Получить информацию о транзакциях из CSV-файла\n' \
+'1. Получить информацию о транзакциях из JSON-файла\n'
+'2. Получить информацию о транзакциях из CSV-файла\n'
 '3. Получить информацию о транзакциях из XLSX-файла\n')
 
 
 if answer == '1':
     print('Для обработки выбран JSON-файл.')
-    answer = input('1. Ввести путь до файла\n'\
+    answer = input('1. Ввести путь до файла\n'
              '2. Выбрать файл data/operations.json\n')
-    
+
     if answer == '1':
         while True:
             answer = input('Введите путь до файла\n')
@@ -32,15 +32,15 @@ if answer == '1':
 
             file_format = 'json'
             break
-            
+
     elif answer == '2':
         dict_list = get_transactions('data/operations.json')
         file_format = 'json'
 elif answer == '2':
     print('Для обработки выбран CSV-файл.')
-    answer = input('1. Ввести путь до файла\n'\
+    answer = input('1. Ввести путь до файла\n'
              '2. Выбрать файл data/transactions.csv\n')
-    
+
     if answer == '1':
         while True:
             answer = input('Введите путь до файла\n')
@@ -54,7 +54,7 @@ elif answer == '2':
         file_format = 'csv'
 elif answer == '3':
     print('Для обработки выбран XLSX-файл.')
-    answer = input('1. Ввести путь до файла\n'\
+    answer = input('1. Ввести путь до файла\n'
              '2. Выбрать файл data/transactions_excel.xlsx\n')
     if answer == '1':
         while True:
@@ -69,7 +69,7 @@ elif answer == '3':
         file_format = 'excel'
 
 while True:
-    answer = input('Введите статус, по которому необходимо выполнить фильтрацию.\n' \
+    answer = input('Введите статус, по которому необходимо выполнить фильтрацию.\n'
     'Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n')
     if answer.upper() == 'EXECUTED':
         filter = 'EXECUTED'
@@ -106,7 +106,7 @@ dict_list = filter_by_currency(dict_list, 'RUB', file_format)
 dict_list = list(dict_list)
 
 with open('data/test.json', 'w') as file:
-            json.dump(dict_list, file)
+    json.dump(dict_list, file)
 
 answer = input('Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n')
 
@@ -121,7 +121,7 @@ if answer.upper() == 'ДА':
 print('Распечатываю итоговый список транзакций')
 
 count_description = len(dict_list)
-print('Всего банковских операций в выборке:',count_description)
+print('Всего банковских операций в выборке:', count_description)
 
 for i in dict_list:
     if i['description'] == 'Открытие вклада':
@@ -178,7 +178,7 @@ for i in dict_list:
         from_account_name = i['from'].split()
         to_mask_account = get_mask_account(i['to'])
         to_account_name = i['to'].split()
-        
+
         print(*from_account_name[:-1], from_mask_account, '->', *to_account_name[:-1], to_mask_account)
 
         if file_format == 'json':
@@ -187,12 +187,3 @@ for i in dict_list:
             print('Сумма:', i['amount'], i['currency_code'])
         elif file_format == 'excel':
             print('Сумма:', i['amount'], i['currency_code'])
-
-
-
-    
-
-
-
-        
-

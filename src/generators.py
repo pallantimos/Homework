@@ -7,15 +7,15 @@ def filter_by_currency(dict_list: list, currency: str, format: str) -> Any:
     if not dict_list:
         return "Пустой список"
 
-    if format == 'json':
+    if format == "json":
         for i in dict_list:
             if i["operationAmount"]["currency"]["code"] == currency:
                 yield i
-    elif format == 'csv':
+    elif format == "csv":
         for i in dict_list:
             if i["currency_code"] == currency:
                 yield i
-    elif format == 'excel':
+    elif format == "excel":
         for i in dict_list:
             if i["currency_code"] == currency:
                 yield i

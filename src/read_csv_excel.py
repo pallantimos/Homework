@@ -8,7 +8,7 @@ def get_from_csv(csv_path: str) -> list:
     """Возвращает считанный файл в виде списка словарей"""
 
     try:
-        with open(csv_path, encoding='utf-8') as file:
+        with open(csv_path, encoding="utf-8") as file:
             list_csv = []
             reader = csv.DictReader(file, delimiter=";")
             next(reader)
@@ -34,5 +34,5 @@ def get_from_excel(excel_path: str) -> list:
     return list_excel
 
 
-with open('data/test.json', 'w') as file:
-            json.dump(get_from_csv('data/transactions.csv'), file)
+with open("data/test.json", "w") as file:
+    json.dump(get_from_csv("data/transactions.csv"), file)
